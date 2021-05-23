@@ -1,0 +1,139 @@
+<html>
+<head>
+    <title>Home ' .</title>
+
+    <script type="text/javascript">
+function gs(opts) {
+    var s = 'https://www.google.com/search?num=50&safe=off&gl=' + opts.lang + '&hl=' + opts.lang + '&lr=lang_' + opts.lang + (opts.additional ? opts.additional : '') + '&q=' + encodeURIComponent( (opts.pre ? opts.pre : '') + document.getElementById('q').value)
+
+    if (opts.newWindow) {
+        window.open(s)
+    } else {
+        window.top.location.href = s
+    }
+
+    return false
+}
+
+function gns(opts) {
+    var s = 'https://www.google.' + opts.domain + '/search?tbm=nws&gl=' + opts.lang + '&hl=' + opts.lang + '&lr=lang_' + opts.lang + '&q=' + encodeURIComponent(document.getElementById('q').value)
+
+    if (opts.newWindow) {
+        window.open(s)
+    } else {
+        window.top.location.href = s
+    }
+
+    return false
+}
+
+function yt(opts) {
+    var s = 'https://www.youtube.' + opts.domain + '/results?hl=' + opts.lang + '&search_query=' + encodeURIComponent(document.getElementById('q').value)
+
+    if (opts.newWindow) {
+        window.open(s)
+    } else {
+        window.top.location.href = s
+    }
+
+    return false
+}
+
+function imdb(opts) {
+    var s = 'https://www.imdb.com/find?ref_=nv_sr_sm&q=' + encodeURIComponent(document.getElementById('q').value)
+
+    if (opts.newWindow) {
+        window.open(s)
+    } else {
+        window.top.location.href = s
+    }
+
+    return false
+}
+
+function ws(opts) {
+    var s = 'https://' + opts.lang + '.wikipedia.org/w/index.php?search=' + encodeURIComponent(document.getElementById('q').value) + '&title=Special%3ASearch&go=Go'
+
+    if (opts.newWindow) {
+        window.open(s)
+    } else {
+        window.top.location.href = s
+    }
+
+    return false
+}
+
+function clearf() {
+    document.getElementById('q').value = ''
+}
+
+function pLoad() {
+    document.getElementById('q').focus()
+    var val = document.getElementById('q').value
+    document.getElementById('q').value = ''
+    document.getElementById('q').value = val
+}
+
+    </script>
+
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    body {
+        background-color: black;
+        color: silver;
+    }
+
+    input {
+        background-color: silver;
+        color: black;
+    }
+</style>
+
+</head>
+<body onload="pLoad()">
+<form class="pure-form pure-form-stacked" onsubmit="return gs({lang:'en'})">
+    <fieldset>
+        <input class="pure-input-1" id="q" placeholder="Search"><br><br>
+        <button type="button" class="pure-button pure-button-primary" onclick="return gs({lang:'en'})">Sear</button>        
+        <button type="button" class="pure-button pure-button-primary" onclick="return gs({lang:'en', newWindow:1})">Sear^</button>
+        <button type="button" class="pure-button pure-button-primary" onclick="return gs({lang:'en', newWindow:1, additional:'&tbs=isz:l&tbm=isch'})">Imag</button>        
+        <button type="button" class="pure-button pure-button-primary" onclick="return gs({lang:'en', pre:'what is the meaning of '})">Def</button>
+        <button type="button" class="pure-button pure-button-primary" onclick="return clearf()">X</button>
+        <label>Google EN</label>
+    </fieldset>
+</form>
+
+<form class="pure-form pure-form-stacked" onsubmit="return false">
+    <fieldset>
+        <label>Google IT</label>
+        <button type="button" class="pure-button pure-button-primary" onclick="return gs({lang:'it'})">Sear</button>
+        <button type="button" class="pure-button pure-button-primary" onclick="return gs({lang:'it', newWindow:1})">Sear^</button>
+        <button type="button" class="pure-button pure-button-primary" onclick="return gs({lang:'it', newWindow:1, additional:'&tbs=isz:l&tbm=isch'})">Imag</button>
+        <button type="button" class="pure-button pure-button-primary" onclick="return gs({lang:'it', pre:'traduci in inglese '})">Tran</button>
+        <button type="button" class="pure-button pure-button-primary" onclick="return gs({lang:'it', pre:'significato della parola '})">Sig</button>
+    </fieldset>
+</form>
+
+<form class="pure-form pure-form-stacked" onsubmit="return false">
+    <fieldset>
+        <label>Wikipedia</label>
+        <button type="button" class="pure-button pure-button-primary" onclick="return ws({lang:'en', newWindow:1})">EN</button>
+        <button type="button" class="pure-button pure-button-primary" onclick="return ws({lang:'it', newWindow:1})">IT</button>
+    </fieldset>
+</form>
+
+<form class="pure-form pure-form-stacked" onsubmit="return false">
+    <fieldset>
+        <label>More</label>
+        <button type="button" class="pure-button pure-button-primary" onclick="return gns({lang:'en', domain:'com', newWindow:1})">N EN</button>
+        <button type="button" class="pure-button pure-button-primary" onclick="return gns({lang:'it', domain:'it', newWindow:1})">N IT</button>
+        <button type="button" class="pure-button pure-button-primary" onclick="return gs({lang:'en', newWindow:1, additional:'&tbs=ic:gray%2Cisz:l&tbm=isch&', pre:'coloring pages '})">Col</button>
+        <button type="button" class="pure-button pure-button-primary" onclick="return yt({lang:'en', domain:'com', newWindow:1})">YT</button>
+        <button type="button" class="pure-button pure-button-primary" onclick="return imdb({newWindow:1})">IM</button>
+    </fieldset>
+</form>
+
+</body>
