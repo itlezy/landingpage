@@ -4,7 +4,7 @@
 
     <script type="text/javascript">
 function gs(opts) {
-    var s = 'https://www.google.com/search?num=50&safe=off&gl=' + opts.lang + '&hl=' + opts.lang + '&lr=lang_' + opts.lang + (opts.additional ? opts.additional : '') + '&q=' + encodeURIComponent( (opts.pre ? opts.pre : '') + document.getElementById('q').value)
+    var s = 'https://www.google.com/search?num=50&safe=off&udm=14&gl=' + opts.lang + '&hl=' + opts.lang + '&lr=lang_' + opts.lang + (opts.additional ? opts.additional : '') + '&q=' + encodeURIComponent( (opts.pre ? opts.pre : '') + document.getElementById('q').value)
 
     if (opts.newWindow) {
         window.open(s)
